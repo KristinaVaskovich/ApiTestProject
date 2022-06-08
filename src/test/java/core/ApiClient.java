@@ -11,14 +11,12 @@ import static io.restassured.RestAssured.given;
 
 public class ApiClient {
     private Gson gson = new Gson();
-    public static final Logger logger = LoggerFactory.getLogger(ApiClient.class);
 
     public ApiClient() {
         RestAssured.baseURI = "http://18.157.148.180:8080/";
     }
 
     public PlayerGetAllResponseDto getAllPlayers(int expectedStatusCode) {
-        logger.info("getAllPlayers controller testing");
         PlayerGetAllResponseDto response = given()
                 .contentType(ContentType.JSON)
                 .when()
@@ -31,7 +29,6 @@ public class ApiClient {
     }
 
     public PlayerGetByPlayerIdResponseDto getPlayerByPlayerId(PlayerGetByPlayerIdRequestDto playerGetByPlayerIdRequestDto, int expectedStatusCode) {
-        logger.info("getPlayerByPlayerId controller testing");
         PlayerGetByPlayerIdResponseDto response = given()
                 .contentType(ContentType.JSON)
                 .and()
@@ -45,7 +42,6 @@ public class ApiClient {
     }
 
     public PlayerCreateResponseDto createPlayer(String age, String gender, String login, String password, String role, String screenName, String creator, int expectedStatusCode) {
-        logger.info("createPlayer controller testing");
         PlayerCreateResponseDto response = given()
                 .contentType(ContentType.JSON)
                 .param("age", age)
@@ -64,7 +60,6 @@ public class ApiClient {
     }
 
     public Response deletePlayer(PlayerDeleteRequestDto playerDeleteRequestDto, String role, int expectedStatusCode) {
-        logger.info("deletePlayer controller testing");
         return given()
                 .contentType(ContentType.JSON)
                 .and()
@@ -77,7 +72,6 @@ public class ApiClient {
     }
 
     public PlayerUpdateResponseDto updatePlayer(PlayerUpdateRequestDto playerUpdateRequestDto, int id, String role, int expectedStatusCode) {
-        logger.info("updatePlayer controller testing");
         PlayerUpdateResponseDto response = given()
                 .contentType(ContentType.JSON)
                 .and()

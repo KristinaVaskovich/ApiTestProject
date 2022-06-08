@@ -10,6 +10,7 @@ public class GetAllPlayersTest extends BaseTest {
 
     @Test(description = "Checking to get a list of all users")
     public void getAllPlayerTest() throws FileNotFoundException {
+        logger.info("getAllPlayers controller testing");
         PlayerGetAllResponseDto playerGetAllResponseDto = apiClient.getAllPlayers(200);
         PlayerGetAllResponseDto playerGetAllResponseDtoFromJson = gson.fromJson(new FileReader("src\\testResources\\players.json"), PlayerGetAllResponseDto.class);
         SoftAssert asserts = new SoftAssert();

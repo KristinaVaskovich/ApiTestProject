@@ -12,6 +12,7 @@ public class CreatePlayerTest extends BaseTest {
 
     @Test(dataProvider = "dataTest",description = "Checking user creation")
     public void createPlayerTest(String age, String gender, String login, String password, String role, String screenName, String creator, int expectedStatusCode) {
+        logger.info("createPlayer controller testing");
         PlayerCreateResponseDto playerCreateResponseDto = apiClient.createPlayer(age, gender, login, password, role, screenName, creator, expectedStatusCode);
 
         SoftAssert asserts = new SoftAssert();
@@ -22,6 +23,7 @@ public class CreatePlayerTest extends BaseTest {
         asserts.assertEquals(playerCreateResponseDto.getRole(), role);
         asserts.assertEquals(playerCreateResponseDto.getScreenName(), screenName);
         id = playerCreateResponseDto.getId();
+        logger.info("id of created user is " + id);
         asserts.assertAll();
     }
 

@@ -21,6 +21,7 @@ public class UpdatePlayerTest extends BaseTest {
 
     @Test(dataProvider = "dataTest", description = "Checking user edit by id")
     public void updatePlayerTest(int id, int age, String gender, String login, String password, String role, String screenName, int expectedStatusCode) {
+        logger.info("updatePlayer controller testing");
         PlayerUpdateRequestDto playerUpdateRequestDto = new PlayerUpdateRequestDto();
         playerUpdateRequestDto.setAge(age);
         playerUpdateRequestDto.setGender(gender);
@@ -30,7 +31,7 @@ public class UpdatePlayerTest extends BaseTest {
         playerUpdateRequestDto.setScreenName(screenName);
 
         PlayerUpdateResponseDto playerUpdateResponseDto = apiClient.updatePlayer(playerUpdateRequestDto, id, "admin", expectedStatusCode);
-
+        logger.info("updated player info: " + playerUpdateResponseDto.toString());
         SoftAssert asserts = new SoftAssert();
         asserts.assertEquals(playerUpdateResponseDto.getAge(), age);
         asserts.assertEquals(playerUpdateResponseDto.getGender(), gender);

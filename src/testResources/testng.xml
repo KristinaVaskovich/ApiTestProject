@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="API" parallel="classes" thread-count="3">
-    <test name="API">
+    <test name="createPlayerTest" parallel="classes">
         <packages>
-            <package name="playerControllerTests"/>
+            <package name="playerControllerTests/CreatePlayerTest"/>
+        </packages>
+    </test>
+    <test name="deletePlayerTest" parallel="classes">
+        <packages>
+            <package name="playerControllerTests/DeletePlayerTest"/>
+        </packages>
+    </test>
+    <test name="getAllPlayersTest" parallel="classes">
+        <packages>
+            <package name="playerControllerTests/GetAllPlayersTest"/>
+        </packages>
+    </test>
+    <test name="getPlayerByPlayerIdTest" parallel="classes">
+        <packages>
+            <package name="playerControllerTests/GetPlayerByPlayerIdTest"/>
+        </packages>
+    </test>
+    <test name="updatePlayerTest" parallel="classes">
+        <packages>
+            <package name="playerControllerTests/UpdatePlayerTest"/>
         </packages>
     </test>
 </suite>

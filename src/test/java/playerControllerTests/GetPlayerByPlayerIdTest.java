@@ -10,10 +10,11 @@ public class GetPlayerByPlayerIdTest extends BaseTest {
 
     @Test(dataProvider = "dataTest", description = "Checking getting a user by id")
     public void getPlayerByPlayerIdTest(int id, int age, String gender, String login, String password, String role, String screenName, int expectedStatusCode) {
+        logger.info("getPlayerByPlayerId controller testing");
         PlayerGetByPlayerIdRequestDto playerGetByPlayerIdRequestDto = new PlayerGetByPlayerIdRequestDto();
         playerGetByPlayerIdRequestDto.setPlayerId(id);
         PlayerGetByPlayerIdResponseDto playerGetByPlayerIdResponseDto = apiClient.getPlayerByPlayerId(playerGetByPlayerIdRequestDto, expectedStatusCode);
-
+        logger.info("player by id " + id + " " + playerGetByPlayerIdResponseDto.toString());
         SoftAssert asserts = new SoftAssert();
         asserts.assertEquals(playerGetByPlayerIdResponseDto.getAge(), age);
         asserts.assertEquals(playerGetByPlayerIdResponseDto.getGender(), gender);
