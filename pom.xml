@@ -93,9 +93,6 @@
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src/testResources/testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
                 </configuration>
                 <dependencies>
                     <dependency>
