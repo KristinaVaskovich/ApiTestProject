@@ -17,7 +17,7 @@ public class ApiClient {
     }
 
     public PlayerGetAllResponseDto getAllPlayers(int expectedStatusCode) {
-        PlayerGetAllResponseDto response = given()
+        return given()
                 .contentType(ContentType.JSON)
                 .when()
                 .get(ApiEndpoints.GET_ALL_PLAYERS)
@@ -25,11 +25,10 @@ public class ApiClient {
                 .assertThat().statusCode(expectedStatusCode)
                 .extract()
                 .as(PlayerGetAllResponseDto.class);
-        return gson.fromJson(gson.toJson(response), PlayerGetAllResponseDto.class);
     }
 
     public PlayerGetByPlayerIdResponseDto getPlayerByPlayerId(PlayerGetByPlayerIdRequestDto playerGetByPlayerIdRequestDto, int expectedStatusCode) {
-        PlayerGetByPlayerIdResponseDto response = given()
+        return given()
                 .contentType(ContentType.JSON)
                 .and()
                 .body(playerGetByPlayerIdRequestDto)
@@ -38,11 +37,10 @@ public class ApiClient {
                 .then()
                 .assertThat().statusCode(expectedStatusCode)
                 .extract().as(PlayerGetByPlayerIdResponseDto.class);
-        return gson.fromJson(gson.toJson(response), PlayerGetByPlayerIdResponseDto.class);
     }
 
     public PlayerCreateResponseDto createPlayer(String age, String gender, String login, String password, String role, String screenName, String creator, int expectedStatusCode) {
-        PlayerCreateResponseDto response = given()
+        return given()
                 .contentType(ContentType.JSON)
                 .param("age", age)
                 .param("gender", gender)
@@ -56,7 +54,6 @@ public class ApiClient {
                 .assertThat().statusCode(expectedStatusCode)
                 .extract()
                 .as(PlayerCreateResponseDto.class);
-        return gson.fromJson(gson.toJson(response), PlayerCreateResponseDto.class);
     }
 
     public Response deletePlayer(PlayerDeleteRequestDto playerDeleteRequestDto, String role, int expectedStatusCode) {
@@ -72,7 +69,7 @@ public class ApiClient {
     }
 
     public PlayerUpdateResponseDto updatePlayer(PlayerUpdateRequestDto playerUpdateRequestDto, int id, String role, int expectedStatusCode) {
-        PlayerUpdateResponseDto response = given()
+        return given()
                 .contentType(ContentType.JSON)
                 .and()
                 .body(playerUpdateRequestDto)
@@ -82,6 +79,5 @@ public class ApiClient {
                 .assertThat().statusCode(expectedStatusCode)
                 .extract()
                 .as(PlayerUpdateResponseDto.class);
-        return gson.fromJson(gson.toJson(response), PlayerUpdateResponseDto.class);
     }
 }
