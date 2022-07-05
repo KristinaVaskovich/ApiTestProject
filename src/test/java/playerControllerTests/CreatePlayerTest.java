@@ -14,7 +14,6 @@ public class CreatePlayerTest extends BaseTest {
     public void createPlayerTest(String age, String gender, String login, String password, String role, String screenName, String creator, int expectedStatusCode) {
         logger.info("createPlayer controller testing");
         PlayerCreateResponseDto playerCreateResponseDto = apiClient.createPlayer(age, gender, login, password, role, screenName, creator, expectedStatusCode);
-
         SoftAssert asserts = new SoftAssert();
         asserts.assertEquals(playerCreateResponseDto.getAge(), age);
         asserts.assertEquals(playerCreateResponseDto.getGender(), gender);
